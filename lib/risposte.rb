@@ -13,7 +13,7 @@ module Risposte
 
   class Tutorial
     def initialize(argomento)
-      @argomento = argomento #con @ la rendo 'globale' all'interno del file rb
+      @argomento = argomento # con @ la rendo 'globale' all'interno del file rb
     end
 
     def trova_link

@@ -2,6 +2,7 @@ require 'facebook/messenger'
 require_relative './lib/messaggi'
 require_relative './lib/argomenti'
 require_relative './lib/risposte'
+
 include Facebook::Messenger
 
 Bot.on :message do |message|
@@ -25,7 +26,14 @@ Bot.on :message do |message|
     else
       rispondi_con("Nessun tutorial trovato su #{data} :(", message)
     end
-  elsif /something humans like/i =~ text
+  elsif /serve un tutor/i =~ text
+    data = text.match(array_to_regexp(Tutor::DISPONIBILI, true))
+    if data
+      rispondi_con(Tutor.per(data[1]), message)
+    else
+      rispondi_con("Non abbiamo trovato tutor per il tuo argomento :(")
+    end
+  else
     message.reply(
       text: 'Hello, human!',
       quick_replies: [
@@ -62,7 +70,6 @@ Bot.on :message do |message|
         }
       }
     )
-  else
     message.reply(
       text: 'You are now marked for extermination.'
     )
