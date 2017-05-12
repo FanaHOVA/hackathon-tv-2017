@@ -19,7 +19,11 @@ module Risposte
     def trova_link
       puts @argomento
       page = Wikipedia.find(@argomento, :prop => "info")
-      page.fullurl
+      if page.text.nil?
+        "Scusami, questo argomento non mi compete... Unlucky :("      
+      elsif
+        page.fullurl
+      end 
       #TODO trova link tutorial
     end
   end
