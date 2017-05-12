@@ -1,4 +1,3 @@
-
 class Argomenti
   BASE = ['computer', 'stampante', 'scanner', 'internet']
   MEDIO = ['cicli for', 'condizionali', 'programmazione a oggetti']
@@ -14,5 +13,9 @@ class Argomenti
 
   def to_s
     "Queste sono le informazioni: #{prendi_dati}"
+  end
+
+  def self.tutti
+    BASE + MEDIO + AVANZATO
   end
 end

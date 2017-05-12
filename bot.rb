@@ -11,7 +11,7 @@ Bot.on :message do |message|
   text = message.text
 
   if array_to_regexp(Messaggi::DOMANDE) =~ text
-    data = text.match(array_to_regexp(Argomenti::BASE, true))
+    data = text.match(array_to_regexp(Argomenti.tutti, true))
     unless data.nil?
       rispondi_con("#{Risposte::Testuale.new(data[1]).crea_descrizione}", message)
       chiedi_feedback(message)
