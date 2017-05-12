@@ -33,6 +33,7 @@ Bot.on :message do |message|
       rispondi_con(Tutor.per(data[1]), message)
     else
       rispondi_con("Non abbiamo trovato tutor per il tuo argomento :(")
+      rispondi_con_immagine('https://media.tenor.co/images/fc6941bd311eb000cae7833fd3c71480/tenor.gif')
     end
   else
     message.reply(
@@ -45,9 +46,6 @@ Bot.on :message do |message|
         }
       ]
     )
-    message.reply(
-      text: 'I found something humans seem to like:'
-    )
 
     message.reply(
       attachment: {
@@ -56,27 +54,6 @@ Bot.on :message do |message|
           url: 'https://i.imgur.com/iMKrDQc.gif'
         }
       }
-    )
-
-    message.reply(
-      attachment: {
-        type: 'template',
-        payload: {
-          template_type: 'button',
-          text: 'Did human like it?',
-          buttons: [
-            { type: 'postback', title: 'Yes', payload: 'HUMAN_LIKED' },
-            { type: 'postback', title: 'No', payload: 'HUMAN_DISLIKED' }
-          ]
-        }
-      }
-    )
-    message.reply(
-      text: 'You are now marked for extermination.'
-    )
-
-    message.reply(
-      text: 'Have a nice day.'
     )
   end
 end
@@ -121,4 +98,15 @@ end
 
 def rispondi_con(messaggio, message)
   message.reply(text: messaggio)
+end
+
+def rispondi_con_immagine(url_img, message)
+  message.reply(
+    attachment: {
+      type: 'image',
+      payload: {
+        url: url_img
+      }
+    }
+  )
 end
