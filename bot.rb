@@ -1,7 +1,7 @@
 require 'facebook/messenger'
 require_relative './lib/messaggi'
 require_relative './lib/argomenti'
-
+require_relative './lib/risposte'
 include Facebook::Messenger
 
 Bot.on :message do |message|

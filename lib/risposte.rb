@@ -5,7 +5,8 @@ module Risposte
     end
 
     def crea_descrizione
-      Argomenti.new(@argomento)}.to_s
+      "Salve #{@argomento}"
+      #Argomenti.new(@argomento).to_s
     end
   end
 
