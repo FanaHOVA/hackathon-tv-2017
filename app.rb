@@ -2,8 +2,16 @@ require 'sinatra'
 require 'dotenv'
 Dotenv.load
 
-get '/webhook' do
-  params['hub.challenge'] if ENV["VERIFY_TOKEN"] == params['hub.verify_token']
+get '/domanda/:text' do
+  AnalisiInput.domande(params[:text])
+end
+
+get '/tutorial/:text' do
+  AnalisiInput.tutorial(params[:text])
+end
+
+get '/tutor/:text' do
+  AnalisiInput.tutor(params[:text])
 end
 
 get "/" do
