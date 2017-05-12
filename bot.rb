@@ -12,6 +12,7 @@ Bot.on :message do |message|
     data = text.match(array_to_regexp(Argomenti::BASE, true))
     unless data.nil?
       rispondi_con("#{Risposte::Testuale.new(data[1]).crea_descrizione}", message)
+      chiedi_feedback(message)
     else
       rispondi_con("Non abbiamo trovato nulla su #{data}, mi dispiace! :(", message)
     end
@@ -20,6 +21,7 @@ Bot.on :message do |message|
     if data
       link = Risposte::Tutorial.new(data[1]).trova_link
       rispondi_con("Ti abbiamo trovato un tutorial! Vai su #{link}", message)
+      chiedi_feedback(message)
     else
       rispondi_con("Nessun tutorial trovato su #{data} :(", message)
     end
@@ -91,6 +93,22 @@ end
 def array_to_regexp(array, catch_data = false)
   return Regexp.new(array.join('|')) unless catch_data
   Regexp.new("(#{array.join('|')})")
+end
+
+def chiedi_feedback(message)
+  message.reply(
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'button',
+        text: 'Ti è stato utile?',
+        buttons: [
+          { type: 'postback', title: 'Si', payload: 'HUMAN_LIKED' },
+          { type: 'postback', title: 'No', payload: 'HUMAN_DISLIKED' }
+        ]
+      }
+    }
+  )
 end
 
 def rispondi_con(messaggio, message)
