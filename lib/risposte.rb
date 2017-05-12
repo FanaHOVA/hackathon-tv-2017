@@ -17,6 +17,7 @@ module Risposte
     end
 
     def trova_link
+      puts @argomento
       page = Wikipedia.find(@argomento, :prop => "info")
       page.fullurl
       #TODO trova link tutorial
