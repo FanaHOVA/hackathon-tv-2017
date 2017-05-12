@@ -32,8 +32,8 @@ Bot.on :message do |message|
     if data
       rispondi_con(Tutor.per(data[1]), message)
     else
-      rispondi_con("Non abbiamo trovato tutor per il tuo argomento :(")
-      rispondi_con_immagine('https://media.tenor.co/images/fc6941bd311eb000cae7833fd3c71480/tenor.gif')
+      rispondi_con("Non abbiamo trovato tutor per il tuo argomento :(", message)
+      rispondi_con_immagine('https://media.tenor.co/images/fc6941bd311eb000cae7833fd3c71480/tenor.gif', message)
     end
   else
     message.reply(
