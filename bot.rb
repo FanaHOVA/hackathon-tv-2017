@@ -3,6 +3,7 @@ require_relative './lib/messaggi'
 require_relative './lib/argomenti'
 require_relative './lib/risposte'
 require_relative './lib/tutor'
+require_relative './analisi_input'
 
 include Facebook::Messenger
 
