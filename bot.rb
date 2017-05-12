@@ -16,7 +16,7 @@ Bot.on :message do |message|
       rispondi_con("Non abbiamo trovato nulla su #{data}, mi dispiace! :(", message)
     end
   elsif /tutorial/i =~ text
-    data = text.match(/cerco tutorial su (\D*)/)
+    data = text.match(/tutorial .* (\D*)/)
     if data
       link = Risposte::Tutorial.new(data.first).trova_link
       rispondi_con("Ti abbiamo trovato un tutorial! Vai su #{link}", message)
