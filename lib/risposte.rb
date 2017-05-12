@@ -6,8 +6,7 @@ module Risposte
     end
 
     def crea_descrizione
-      "Salve #{@argomento}"
-      #Argomenti.new(@argomento).to_s
+      Argomenti.new(@argomento)
     end
   end
 
@@ -28,7 +27,6 @@ module Risposte
       else
         page.fullurl
       end 
-      #TODO trova link tutorial
     end
   end
 end

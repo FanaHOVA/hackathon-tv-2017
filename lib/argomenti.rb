@@ -1,6 +1,9 @@
 require 'wikipedia'
 class Argomenti
   BASE = ['computer', 'stampante', 'scanner', 'internet']
+  RIS_BASE = { 'computer' => 'Il computer è un calcolatore!',
+               'stampante' => 'La stampante stampa!',
+               'scanner' => 'Lo scanner copia le foto!' }
   MEDIO = ['cicli for', 'condizionali', 'programmazione a oggetti']
   AVANZATO = ['gerarchie', 'metaprogrammazione', 'continuous integration']
 
@@ -24,6 +27,10 @@ class Argomenti
   end
 
   def to_s
-    "Queste sono le informazioni: #{prendi_dati}"
+    "Abbiamo qualche info su #{@chiave}! #{prendi_dati}"
+  end
+
+  def self.tutti
+    BASE + MEDIO + AVANZATO
   end
 end
