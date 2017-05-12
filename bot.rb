@@ -10,12 +10,17 @@ Bot.on :message do |message|
 
   if array_to_regexp(Messaggi::DOMANDE) =~ text
     data = text.match(array_to_regexp(Argomenti::BASE))
-    return crea_risposte(data) unless data.nil?
-    "Non abbiamo trovato nulla, mi dispiace! :("
+    unless data.nil?
+      message.reply(text: "#{crea_risposte(data)}")
+    else
+      message.reply(text: "Non abbiamo trovato nulla, mi dispiace! :(")
+    end
   elsif /tutorial/i =~ text
     data = text.match(/cerco tutorial su (\D*)/)
     link = Risposte::Tutorial.new(data.first).trova_link
-    "Ti abbiamo trovato un tutorial! Vai su #{link}"
+    message.reply(
+      text: "Ti abbiamo trovato un tutorial! Vai su #{link}"
+    )
   elsif /something humans like/i =~ text
     message.reply(
       text: 'Hello, human!',
@@ -87,7 +92,9 @@ end
 
 def crea_risposte(argomenti)
   return '' unless argomenti
+  desc = []
   argomenti.each do |argomento|
-    Risposte::Testuale.new(argomento)
+    desc << Risposte::Testuale.new(argomento).crea_descrizione
   end
+  desc
 end
