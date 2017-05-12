@@ -15,7 +15,7 @@ class Argomenti
   end
 
   def to_s
-    "Queste sono le informazioni: #{prendi_dati}"
+    "Abbiamo qualche info su #{@chiave}! #{prendi_dati}"
   end
 
   def self.tutti
