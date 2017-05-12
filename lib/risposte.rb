@@ -6,8 +6,7 @@ module Risposte
     end
 
     def crea_descrizione
-      "Salve #{@argomento}"
-      #Argomenti.new(@argomento).to_s
+      Argomenti.new(@argomento)
     end
   end
 
@@ -17,10 +16,8 @@ module Risposte
     end
 
     def trova_link
-      puts @argomento
       page = Wikipedia.find(@argomento, :prop => "info")
       page.fullurl
-      #TODO trova link tutorial
     end
   end
 end
