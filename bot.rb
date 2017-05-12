@@ -35,3 +35,8 @@ def rispondi_con_immagine(url_img, message)
     }
   )
 end
+
+def array_to_regexp(array, catch_data = false)
+  return Regexp.new(array.join('|')) unless catch_data
+  Regexp.new("(#{array.join('|')})")
+end
