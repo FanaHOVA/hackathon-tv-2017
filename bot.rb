@@ -1,12 +1,22 @@
 require 'facebook/messenger'
+require_relative './lib/messaggi'
+require_relative './lib/argomenti'
 
 include Facebook::Messenger
 
 Bot.on :message do |message|
   puts "Received '#{message.inspect}' from #{message.sender}"
+  text = message.text
 
-  case message.text
-  when /hello/i
+  if array_to_regexp(Messaggi::DOMANDE) =~ text
+    data = text.match(array_to_regexp(Argomenti::BASE))
+    crea_risposte(data) unless data.empty?
+    "Non abbiamo trovato nulla, mi dispiace! :("
+  elsif /tutorial/i =~ text
+    data = text.match(/cerco tutorial su (\D*)/)
+    link = Risposte::Tutorial.new(data.first).trova_link
+    "Ti abbiamo trovato un tutorial! Vai su #{link}"
+  elsif /something humans like/i =~ text
     message.reply(
       text: 'Hello, human!',
       quick_replies: [
@@ -17,7 +27,6 @@ Bot.on :message do |message|
         }
       ]
     )
-  when /something humans like/i
     message.reply(
       text: 'I found something humans seem to like:'
     )
@@ -70,4 +79,14 @@ end
 
 Bot.on :delivery do |delivery|
   puts "Delivered message(s) #{delivery.ids}"
+end
+
+def array_to_regexp(array)
+  Regexp.new(array.join('|'))
+end
+
+def crea_risposte(argomenti)
+  argomenti.each do |argomento|
+    Risposte::Testuale.new(argomento)
+  end
 end
