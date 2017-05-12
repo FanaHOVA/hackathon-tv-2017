@@ -11,4 +11,4 @@ def tutor(argomento)
 end
 
 puts prova_risposta('enrico carboni')
-puts prova_risposta('carbonara')
+puts prova_risposta('internet')

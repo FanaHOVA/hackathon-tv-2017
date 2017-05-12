@@ -17,6 +17,9 @@ module Risposte
     end
 
     def trova_link
+      Wikipedia.Configure {
+        domain 'it.wikipedia.org'
+      }
       puts @argomento
       page = Wikipedia.find(@argomento, :prop => "info")
       text = page.text

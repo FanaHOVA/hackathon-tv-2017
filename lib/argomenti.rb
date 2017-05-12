@@ -9,6 +9,9 @@ class Argomenti
   end
 
   def prendi_dati
+    Wikipedia.Configure {
+      domain 'it.wikipedia.org'
+    }
     puts @chiave
     page = Wikipedia.find(@chiave, :prop => "info")
     text = page.text
