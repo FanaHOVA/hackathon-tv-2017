@@ -13,13 +13,17 @@ module Risposte
 
   class Tutorial
     def initialize(argomento)
-      @argomento = argomento # con @ la rendo 'globale' all'interno del file rb
+      @argomento = argomento #con @ la rendo 'globale' all'interno del file rb
     end
 
     def trova_link
       puts @argomento
       page = Wikipedia.find(@argomento, :prop => "info")
-      
+      if page.text.nil?
+        "Scusami, questo argomento non mi compete... Unlucky :("      
+      elsif
+        page.fullurl
+      end 
       #TODO trova link tutorial
     end
   end
