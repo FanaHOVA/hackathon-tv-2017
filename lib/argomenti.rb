@@ -1,5 +1,8 @@
 class Argomenti
   BASE = ['computer', 'stampante', 'scanner', 'internet']
+  RIS_BASE = { 'computer' => 'Il computer è un calcolatore!',
+               'stampante' => 'La stampante stampa!',
+               'scanner' => 'Lo scanner copia le foto!' }
   MEDIO = ['cicli for', 'condizionali', 'programmazione a oggetti']
   AVANZATO = ['gerarchie', 'metaprogrammazione', 'continuous integration']
 
@@ -8,7 +11,7 @@ class Argomenti
   end
 
   def prendi_dati
-    #TODO trova info
+    RIS_BASE[@chiave]
   end
 
   def to_s
