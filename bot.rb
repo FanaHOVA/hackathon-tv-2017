@@ -9,23 +9,19 @@ Bot.on :message do |message|
   text = message.text
 
   if array_to_regexp(Messaggi::DOMANDE) =~ text
-    data = text.match(array_to_regexp(Argomenti::BASE))
+    data = text.match(array_to_regexp(Argomenti::BASE, true))
     unless data.nil?
-      message.reply(text: "#{crea_risposte(data)}")
+      rispondi_con("#{crea_risposta_testuale(data)}", message)
     else
-      message.reply(text: "Non abbiamo trovato nulla, mi dispiace! :(")
+      rispondi_con("Non abbiamo trovato nulla su #{data}, mi dispiace! :(", message)
     end
   elsif /tutorial/i =~ text
-    data = text.match(/cerco tutorial su (\D*)/)
+    data = text.match(/tutorial .* (\D*)/)
     if data
       link = Risposte::Tutorial.new(data.first).trova_link
-      message.reply(
-        text: "Ti abbiamo trovato un tutorial! Vai su #{link}"
-      )
+      rispondi_con("Ti abbiamo trovato un tutorial! Vai su #{link}", message)
     else
-      message.reply(
-        text: "Nessun tutorial trovato :("
-      )
+      rispondi_con("Nessun tutorial trovato su #{data} :(", message)
     end
   elsif /something humans like/i =~ text
     message.reply(
@@ -92,15 +88,20 @@ Bot.on :delivery do |delivery|
   puts "Delivered message(s) #{delivery.ids}"
 end
 
-def array_to_regexp(array)
-  Regexp.new(array.join('|'))
+def array_to_regexp(array, catch_data = false)
+  return Regexp.new(array.join('|')) unless catch_data
+  Regexp.new("(#{array.join('|')})")
 end
 
-def crea_risposte(argomenti)
+def crea_risposta_testuale(argomenti)
   return '' unless argomenti
   desc = []
   argomenti.each do |argomento|
     desc << Risposte::Testuale.new(argomento).crea_descrizione
   end
   desc
+end
+
+def rispondi_con(messaggio, message)
+  message.reply(text: messaggio)
 end
