@@ -1,4 +1,4 @@
-
+require 'wikipedia'
 class Argomenti
   BASE = ['computer', 'stampante', 'scanner', 'internet']
   MEDIO = ['cicli for', 'condizionali', 'programmazione a oggetti']
@@ -9,7 +9,15 @@ class Argomenti
   end
 
   def prendi_dati
-    #TODO trova info
+    puts @chiave
+    page = Wikipedia.find(@chiave, :prop => "info")
+    text = page.text
+    puts page.summary
+    if   Wikipedia.find(@chiave).text.nil? 
+      "Scusami, questo argomento non mi compete... Unlucky :("
+    else
+      Wikipedia.find(@chiave).summary  
+    end 
   end
 
   def to_s
