@@ -17,10 +17,16 @@ Bot.on :message do |message|
     end
   elsif /tutorial/i =~ text
     data = text.match(/cerco tutorial su (\D*)/)
-    link = Risposte::Tutorial.new(data.first).trova_link
-    message.reply(
-      text: "Ti abbiamo trovato un tutorial! Vai su #{link}"
-    )
+    if data
+      link = Risposte::Tutorial.new(data.first).trova_link
+      message.reply(
+        text: "Ti abbiamo trovato un tutorial! Vai su #{link}"
+      )
+    else
+      message.reply(
+        text: "Nessun tutorial trovato :("
+      )
+    end
   elsif /something humans like/i =~ text
     message.reply(
       text: 'Hello, human!',
