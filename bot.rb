@@ -11,7 +11,7 @@ Bot.on :message do |message|
   if array_to_regexp(Messaggi::DOMANDE) =~ text
     data = text.match(array_to_regexp(Argomenti::BASE, true))
     unless data.nil?
-      rispondi_con("#{crea_risposta_testuale(data)}", message)
+      rispondi_con("#{Risposte::Testuale.new(data[1]).crea_descrizione}", message)
     else
       rispondi_con("Non abbiamo trovato nulla su #{data}, mi dispiace! :(", message)
     end
@@ -91,15 +91,6 @@ end
 def array_to_regexp(array, catch_data = false)
   return Regexp.new(array.join('|')) unless catch_data
   Regexp.new("(#{array.join('|')})")
-end
-
-def crea_risposta_testuale(argomenti)
-  return '' unless argomenti
-  desc = []
-  argomenti.each do |argomento|
-    desc << Risposte::Testuale.new(argomento).crea_descrizione
-  end
-  desc
 end
 
 def rispondi_con(messaggio, message)
