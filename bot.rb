@@ -10,7 +10,7 @@ Bot.on :message do |message|
 
   if array_to_regexp(Messaggi::DOMANDE) =~ text
     data = text.match(array_to_regexp(Argomenti::BASE))
-    crea_risposte(data) unless data
+    return crea_risposte(data) unless data.nil?
     "Non abbiamo trovato nulla, mi dispiace! :("
   elsif /tutorial/i =~ text
     data = text.match(/cerco tutorial su (\D*)/)
@@ -86,6 +86,7 @@ def array_to_regexp(array)
 end
 
 def crea_risposte(argomenti)
+  return '' unless argomenti
   argomenti.each do |argomento|
     Risposte::Testuale.new(argomento)
   end
