@@ -1,3 +1,4 @@
+require 'wikipedia'
 module Risposte
   class Testuale
     def initialize(argomento)
@@ -12,10 +13,12 @@ module Risposte
 
   class Tutorial
     def initialize(argomento)
-      @argomento = argomento
+      @argomento = argomento #con @ la rendo 'globale' all'interno del file rb
     end
 
     def trova_link
+      page = Wikipedia.find(@argomento, :prop => "info")
+      page.fullurl
       #TODO trova link tutorial
     end
   end
