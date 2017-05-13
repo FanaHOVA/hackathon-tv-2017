@@ -12,9 +12,9 @@ Bot.on :message do |message|
   text = message.text
 
   if data = text.match(array_to_regexp(Argomenti::PROGRAMMAZIONE))
-    rispondi_con(AnalisiInput.domande(text), message)
-  elsif array_to_regexp(Messaggi::DOMANDE) =~ text
     rispondi_con(AnalisiInput.programmazione(data[1]), message)
+  elsif array_to_regexp(Messaggi::DOMANDE) =~ text
+    rispondi_con(AnalisiInput.domande(text), message)
   elsif /^come/i =~ text
     rispondi_con(AnalisiInput.tutorial(text), message)
     rispondi_con_immagine('http://blog.zooppa.it/wp-content/uploads/2015/07/aranzulla.gif', message)
