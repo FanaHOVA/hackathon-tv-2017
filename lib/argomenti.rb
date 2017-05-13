@@ -14,11 +14,10 @@ class Argomenti
     Wikipedia.Configure {
       domain 'it.wikipedia.org'
     }
-    puts @chiave
+
     page = Wikipedia.find(@chiave, :prop => "info")
     text = page.text
-    puts page.summary
-    if   Wikipedia.find(@chiave).text.nil?
+    if Wikipedia.find(@chiave).text.nil?
       "Scusami, questo argomento non mi compete... Unlucky :("
     else
     "Ti abbiamo trovato un tutorial! \n" + Wikipedia.find(@chiave).summary
@@ -26,6 +25,6 @@ class Argomenti
   end
 
   def self.tutti
-    BASE + MEDIO + AVANZATO + WEB
+    BASE + MEDIO + AVANZATO + WEB + PROGRAMMAZIONE
   end
 end
