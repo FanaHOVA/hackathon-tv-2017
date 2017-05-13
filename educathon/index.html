@@ -57,19 +57,62 @@
 		<!-- /row -->
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<div id="result"></div>
+				<div id="result" style='margin-top: 25px'></div>
 			</div>
 		</div>
 	</div>
 
 	<script type="text/javascript">
+		var arrayInsulti = ["Ciao bello", "Ciao", "Ciao bellissimo :*"];
+		var arrayRisposte = ["Prego, non c'è di che", "Sono un professionista ;)", "Sono il migliore ;)"];
+
 		$('#query-input').submit(function(ev) {
+			$('.queries').hide();
 			ev.preventDefault();
 			let val = $( "#query" ).val();
-		  $.get( "https://educkathon.herokuapp.com/api/domanda/" + val, function( data ) {
-		    alert( "Load was performed." );
-		    console.log(data)
-		  });
+			if (val.match(/[N|n]on ho capito (.+)/i)) {
+				let match = val.match(/[N|n]on ho capito (.+)/i);
+				$.get( "https://educkathon.herokuapp.com/api/domanda/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			} else if (val.match(/[T|t]utorial (.+)/i)) {
+				let match = val.match(/[T|t]utorial (.+)/i);
+				$.get( "https://educkathon.herokuapp.com/api/tutorial/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			} else if (val.match(/[C|c]os'?[e|è|é] \b\w*\b ([A-z0-9\s]*)/i)) {
+				let match = val.match(/[C|c]os'?[e|è|é] \b\w*\b ([A-z0-9\s]*)/i);
+				$.get( "https://educkathon.herokuapp.com/api/domanda/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			} else if (val.match(/^come (.+)/i)) {
+				let match = val.match(/^come (.+)/i);
+				$.get( "https://educkathon.herokuapp.com/api/tutorial/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			} else if (val.match(/^spiegami come (.+)/i)) {
+				let match = val.match(/^spiegami come (.+)/i);
+				$.get( "https://educkathon.herokuapp.com/api/domanda/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			} else if (val.match(/[N|n]on capisco (.+)/i)) {
+				let match = val.match(/[N|n]on capisco (.+)/i);
+				$.get( "https://educkathon.herokuapp.com/api/domanda/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			} else if (val.match(/[S|s]erve.*tutor (.+)/i)) {
+				let match = val.match(/[S|s]erve.*tutor (.+)/i);
+				$.get( "https://educkathon.herokuapp.com/api/domanda/" + match[0], function( data ) {
+			    console.log(data)
+					$('#result').html(data);
+			  });
+			}
 			return false;
 		});
 	</script>
