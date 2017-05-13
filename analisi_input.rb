@@ -2,6 +2,7 @@ require_relative './lib/argomenti'
 require_relative './lib/tutor'
 require_relative './lib/risposte'
 require_relative './lib/messaggi'
+require 'httparty'
 
 
 class AnalisiInput
@@ -19,13 +20,7 @@ class AnalisiInput
   end
 
   def self.tutorial(text)
-    data = text.match(/tutorial \b\w*\b (.*)/)
-    if data
-      link = Risposte::Tutorial.new(data[1]).trova_link
-      "Ti abbiamo trovato un tutorial! Vai su #{link}"
-    else
-      "Nessun tutorial trovato su #{data} :("
-    end
+    "Non abbiamo trovato un tutorial specifico, ma Salvatore può aiutarti! Vai su https://www.aranzulla.it/?s=#{slug(text)}"
   end
 
   def self.tutor(text)
@@ -41,4 +36,8 @@ end
 def array_to_regexp(array, catch_data = false)
   return Regexp.new(array.join('|')) unless catch_data
   Regexp.new("(#{array.join('|')})")
+end
+
+def slug(text)
+  text.split(' ').join('+')
 end

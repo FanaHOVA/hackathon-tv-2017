@@ -13,7 +13,7 @@ Bot.on :message do |message|
 
   if array_to_regexp(Messaggi::DOMANDE) =~ text
     rispondi_con(AnalisiInput.domande(text), message)
-  elsif /tutorial/i =~ text
+  elsif /^come/i =~ text
     rispondi_con(AnalisiInput.tutorial(text), message)
   elsif /serve un tutor/i =~ text
     rispondi_con(AnalisiInput.tutor(text), message)

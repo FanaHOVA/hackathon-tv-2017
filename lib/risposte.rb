@@ -6,7 +6,7 @@ module Risposte
     end
 
     def crea_descrizione
-      Argomenti.new(@argomento)
+      Argomenti.new(@argomento).prendi_dati
     end
   end
 
@@ -22,11 +22,11 @@ module Risposte
       puts @argomento
       page = Wikipedia.find(@argomento, :prop => "info")
       text = page.text
-      if   Wikipedia.find(@argomento).text.nil? 
+      if   Wikipedia.find(@argomento).text.nil?
         "Scusami, questo argomento non mi compete... Unlucky :("
       else
-        page.fullurl
-      end 
+        "Ti abbiamo trovato un tutorial! Vai su #{page.fullurl}"
+      end
     end
   end
 end
