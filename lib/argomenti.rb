@@ -24,10 +24,6 @@ class Argomenti
     end
   end
 
-  def to_s
-    "Abbiamo qualche info su #{@chiave}! #{prendi_dati}"
-  end
-
   def self.tutti
     BASE + MEDIO + AVANZATO + WEB
   end
