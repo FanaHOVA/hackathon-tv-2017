@@ -17,7 +17,7 @@ class Argomenti
 
     page = Wikipedia.find(@chiave, :prop => "info")
     text = page.text
-    if Wikipedia.find(@chiave).text.nil?
+    if Wikipedia.find(@chiave).summary.nil?
       "Scusami, questo argomento non mi compete... Unlucky :("
     else
     formatta_summary(Wikipedia.find(@chiave).summary)

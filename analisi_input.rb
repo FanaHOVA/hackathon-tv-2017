@@ -9,7 +9,7 @@ class AnalisiInput
   def self.domande(text)
     data = text.match(array_to_regexp(Argomenti.tutti, true))
     unless data.nil?
-      "#{Risposte::Testuale.new(data[1]).crea_descrizione[0..635]}"
+      "#{Risposte::Testuale.new(data[1]).crea_descrizione}"
     else
       "Non abbiamo trovato nulla su #{data}, mi dispiace! :("
     end
