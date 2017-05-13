@@ -15,11 +15,13 @@ Bot.on :message do |message|
     rispondi_con(AnalisiInput.domande(text), message)
   elsif /^come/i =~ text
     rispondi_con(AnalisiInput.tutorial(text), message)
+    rispondi_con_immagine('http://blog.zooppa.it/wp-content/uploads/2015/07/aranzulla.gif', message)
   elsif /serve un tutor/i =~ text
     rispondi_con(AnalisiInput.tutor(text), message)
   elsif /implementazioni/i =~ text
     rispondi_con(AnalisiInput.implementazioni, message)
   else
+    rispondi_con('Scusa, non ho capito cosa intendi')
     rispondi_con_immagine('https://media.tenor.co/images/fc6941bd311eb000cae7833fd3c71480/tenor.gif', message)
   end
 end
