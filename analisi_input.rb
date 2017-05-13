@@ -3,6 +3,7 @@ require_relative './lib/tutor'
 require_relative './lib/risposte'
 require_relative './lib/messaggi'
 
+
 class AnalisiInput
   def self.domande(text)
     data = text.match(array_to_regexp(Argomenti.tutti, true))
@@ -11,6 +12,10 @@ class AnalisiInput
     else
       "Non abbiamo trovato nulla su #{data}, mi dispiace! :("
     end
+  end
+
+  def self.implementazioni()
+    "-Imp 1 -Imp 2 -Imp 3 -Imp 4"
   end
 
   def self.tutorial(text)
