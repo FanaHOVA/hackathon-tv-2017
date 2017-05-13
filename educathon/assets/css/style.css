@@ -331,7 +331,7 @@ hr {
   object-fit: cover; }
 
 h1 {
-  font-family: "Patua One", cursive;
+  font-family: "Patua One", cursive, helvetica, sans-serif;
   font-size: 100px;
   color: #a10d21;
   text-shadow: 3px 3px #630f1a, 4px 4px #630f1a, 5px 5px #630f1a; }
@@ -348,7 +348,7 @@ html, body {
   margin: 0 auto;
   width: 100%;
   min-height: 100%;
-  background: url("../bgabout.jpg") fixed no-repeat center;
+  background: url("../footer_lodyas.png");
   background-size: cover;
   color: white;
   font-family: helvetica, sans-serif; }
