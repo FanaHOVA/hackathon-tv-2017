@@ -11,8 +11,8 @@ class Argomenti
                     "FOR I=1 TO N\n" +
                     "  PRINT I\n" +
                     "Puoi imparare di più su Codecademy: https://www.codecademy.com/courses/javascript-beginner-en-NhsaT/0/1",
-    'ciclo while' => "Il ciclo while possono essere parafrasate come 'ripeti (il codice controllato) fintantoché resta vera la condizione C'.\n" +
-                      "Può essere parafrasato in italiano come: finchè I è minore di 10, stampa I e aumenta I di 1.\n" +
+    'ciclo while' => "Il ciclo while può essere parafrasato come 'ripeti (il codice controllato) fintantoché resta vera la condizione C'.\n" +
+                      "Per esempio in italiano possiamo spiegarlo come: I è minore di 10, stampa I e aumenta I di 1.\n" +
                       "WHILE I < 10\n" +
                       " PRINT I\n" +
                       "  I + 1\n" +
