@@ -38,7 +38,7 @@ class Argomenti
   end
 
   def self.tutti
-    BASE + MEDIO + AVANZATO + WEB + PROGRAMMAZIONE
+    BASE + MEDIO + AVANZATO + WEB
   end
 
   def formatta_summary(summary)
