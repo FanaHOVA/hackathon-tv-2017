@@ -4,7 +4,20 @@ class Argomenti
   MEDIO = ['cicli for', 'condizionali', 'programmazione a oggetti']
   AVANZATO = ['gerarchie', 'metaprogrammazione', 'continuous integration']
   WEB = ['css', 'html', 'javascript', 'php', 'ruby']
-  PROGRAMMAZIONE = ['ciclo for', 'ciclo while']
+  PROGRAMMAZIONE = ['ciclo for', 'ciclo while', 'struttura di controllo']
+  RISPOSTE_PROGRAMMAZIONE = {
+    'ciclo for' => "Il ciclo for determina l'esecuzione di una porzione di programma ripetuta per un certo numero noto di volte.\n
+                    Può essere parafrasato in italiano come: per I che varia da 1 a N, stampa I.\n
+                    FOR I=1 TO N\n
+                      PRINT I\n
+                    Puoi imparare di più su Codecademy: https://www.codecademy.com/courses/javascript-beginner-en-NhsaT/0/1",
+    'ciclo while' => "Il ciclo while possono essere parafrasate come 'ripeti (il codice controllato) fintantoché resta vera la condizione C'.\n
+                      Può essere parafrasato in italiano come: finchè I è minore di 10, stampa I e aumenta I di 1.\n
+                      WHILE I < 10\n
+                        PRINT I
+                        I + 1\n
+                      Puoi imparare di più su Codecademy: https://www.codecademy.com/courses/javascript-beginner-en-NhsaT/0/1"
+  }
 
   def initialize(chiave)
     @chiave = chiave
@@ -31,5 +44,9 @@ class Argomenti
   def formatta_summary(summary)
     return summary if summary.length < 640
     summary[0..620]
+  end
+
+  def self.programmazione(chiave)
+    RISPOSTE_PROGRAMMAZIONE[chiave]
   end
 end

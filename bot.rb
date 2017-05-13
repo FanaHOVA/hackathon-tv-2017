@@ -18,6 +18,8 @@ Bot.on :message do |message|
     rispondi_con_immagine('http://blog.zooppa.it/wp-content/uploads/2015/07/aranzulla.gif', message)
   elsif /serve un tutor/i =~ text
     rispondi_con(AnalisiInput.tutor(text), message)
+  elsif data = text.match(array_to_regexp(Argomenti::PROGRAMMAZIONE))
+    rispondi_con(AnalisiInput.programmazione(data[1]), message)
   elsif /implementazioni/i =~ text
     rispondi_con(AnalisiInput.implementazioni, message)
   elsif /grazie/i =~ text

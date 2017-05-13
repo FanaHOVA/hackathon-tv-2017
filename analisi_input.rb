@@ -31,6 +31,10 @@ class AnalisiInput
       "Non abbiamo trovato tutor per il tuo argomento :("
     end
   end
+
+  def self.programmazione(text)
+    Argomenti.programmazione(text)
+  end
 end
 
 def array_to_regexp(array, catch_data = false)
