@@ -34,6 +34,7 @@ class Argomenti
     result = ''
     while c[0] && result.length + c[0].length < 640
       result << c[0]
+      result << ". "
       c.pop
     end
     result
