@@ -43,7 +43,7 @@ class Argomenti
 
   def formatta_summary(summary)
     return summary if summary.length < 640
-    summary[0..620]
+    summary[0..550]
   end
 
   def self.programmazione(chiave)
