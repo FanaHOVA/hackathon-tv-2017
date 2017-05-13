@@ -63,6 +63,10 @@ var players = [];
 
 var count = 0;
 
+function getrequest() {
+  
+}
+
 function getvalues() {
 
   var query = document.getElementById("query").value;

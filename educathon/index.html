@@ -9,6 +9,11 @@
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/regex.js"></script>
+
 	<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -31,7 +36,6 @@
 
 			<div class="col-lg-12 text-center">
 
-				<div id="noresults" class="noresults"></div>
 				<div id="nofresults" class="success"></div>
 
 				<form class="col-lg-12" id="query-input">
@@ -58,15 +62,14 @@
 		</div>
 	</div>
 
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/regex.js"></script>
-
 	<script type="text/javascript">
 		$('#query-input').submit(function(ev) {
 			ev.preventDefault();
-			getvalues();
+			let val = $( "#query" ).val();
+		  $.get( "https://educkathon.herokuapp.com/api/domanda/" + val, function( data ) {
+		    alert( "Load was performed." );
+		    console.log(data)
+		  });
 			return false;
 		});
 	</script>
