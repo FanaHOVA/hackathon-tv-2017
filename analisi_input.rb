@@ -16,7 +16,10 @@ class AnalisiInput
   end
 
   def self.implementazioni()
-    "-Imp 1 -Imp 2 -Imp 3 -Imp 4"
+    "-Riconoscimento e Riproduzione Vocale 
+    -Miglioramento Algoritmi di Matching dei contenuti
+    -Ampliamento della Base di Conoscenza dei contenuti 
+    -Implementazione Natural Language Processing delle stringhe"
   end
 
   def self.tutorial(text)
