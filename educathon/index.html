@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>NFL Queries</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	<link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body style="padding-top: 0px;">
+	<div class="main-container" style="padding-top: 13%;">
+		<div class="row">
+			<div class="col-lg-12">
+				<img style="width: 40%" src="educathon-logo.png" alt="Educathon">
+				<br><br>
+				<h4 style="color: white;">Benvenuto in Educathon!
+				<br><br>
+				l'assistente che ti guider&agrave; nel mondo della programmazione!</h4>
+				<p class="lead"></p>
+			</div>
+
+
+
+			<div class="col-lg-12 text-center">
+
+				<div id="noresults" class="noresults"></div>
+				<div id="nofresults" class="success"></div>
+
+				<form class="col-lg-12" id="query-input">
+					<div class="querybar input-group">
+						<input class="input-lg" id="query" placeholder="Chiedimi" type="text" autocomplete="off" autofocus>
+					</div>
+				</form>
+
+				<p class="queries">
+					<br>Query d'esempio:
+					<br>Come Funziona .....
+					<br>Non Capisco .....
+					<br>Mi Serve Un Tutorial .....
+					<br>Mi Serve Un Tutor Per .....
+				</p>
+			</div>
+
+		</div>
+		<!-- /row -->
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div id="result"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/regex.js"></script>
+
+	<script type="text/javascript">
+		$('#query-input').submit(function(ev) {
+			ev.preventDefault();
+			getvalues();
+			return false;
+		});
+	</script>
+
+</body>
+
+</html>
