@@ -36,5 +36,6 @@ class Argomenti
       result << c[0]
       c.pop
     end
+    result
   end
 end
