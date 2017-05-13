@@ -20,7 +20,7 @@ class Argomenti
     if Wikipedia.find(@chiave).summary.nil?
       "Scusami, questo argomento non mi compete... Unlucky :("
     else
-    formatta_summary(Wikipedia.find(@chiave).summary)
+    formatta_summary(Wikipedia.find(@chiave).summary) + "... Continua su #{page.fullurl}"
     end
   end
 
@@ -30,6 +30,6 @@ class Argomenti
 
   def formatta_summary(summary)
     return summary if summary.length < 640
-    summary[0..639]
+    summary[0..620]
   end
 end

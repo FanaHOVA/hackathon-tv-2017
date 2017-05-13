@@ -21,9 +21,9 @@ Bot.on :message do |message|
   elsif /implementazioni/i =~ text
     rispondi_con(AnalisiInput.implementazioni, message)
   elsif /grazie/i =~ text
-    rispondi_con("Ringrazia i miei creatori!")
+    rispondi_con("Ringrazia i miei creatori!", message)
   else
-    rispondi_con('Scusa, non ho capito cosa intendi')
+    rispondi_con('Scusa, non ho capito cosa intendi', message)
     rispondi_con_immagine('https://media.tenor.co/images/fc6941bd311eb000cae7833fd3c71480/tenor.gif', message)
   end
 end
