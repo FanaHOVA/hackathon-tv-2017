@@ -30,13 +30,6 @@ class Argomenti
 
   def formatta_summary(summary)
     return summary if summary.length < 640
-    c = summary.split('.')
-    result = ''
-    while c[0] && result.length + c[0].length < 640
-      result << c[0]
-      result << ". "
-      c.pop
-    end
-    result
+    summary[0..639]
   end
 end
