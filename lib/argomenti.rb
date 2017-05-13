@@ -20,11 +20,21 @@ class Argomenti
     if Wikipedia.find(@chiave).text.nil?
       "Scusami, questo argomento non mi compete... Unlucky :("
     else
-    "Ti abbiamo trovato un tutorial! \n" + Wikipedia.find(@chiave).summary
+    formatta_summary(Wikipedia.find(@chiave).summary)
     end
   end
 
   def self.tutti
     BASE + MEDIO + AVANZATO + WEB + PROGRAMMAZIONE
+  end
+
+  def formatta_summary(summary)
+    return summary if summary.length < 640
+    c = summary.split('.')
+    result = ''
+    while c[0] && result.length + c[0].length < 640
+      result << c[0]
+      c.pop
+    end
   end
 end
