@@ -33,7 +33,7 @@ class Argomenti
     if Wikipedia.find(@chiave).summary.nil?
       "Scusami, questo argomento non mi compete... Unlucky :("
     else
-    formatta_summary(Wikipedia.find(@chiave).summary) + "... Continua su #{page.fullurl}"
+      formatta_summary(Wikipedia.find(@chiave).summary) + "... Continua su #{page.fullurl}"
     end
   end
 
