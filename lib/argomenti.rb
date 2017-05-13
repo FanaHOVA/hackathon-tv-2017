@@ -1,9 +1,10 @@
 require 'wikipedia'
 class Argomenti
   BASE = ['computer', 'stampante', 'scanner', 'internet']
-  WEB = ['css', 'html', 'javascript', 'php', 'ruby']
   MEDIO = ['cicli for', 'condizionali', 'programmazione a oggetti']
   AVANZATO = ['gerarchie', 'metaprogrammazione', 'continuous integration']
+  WEB = ['css', 'html', 'javascript', 'php', 'ruby']
+  PROGRAMMAZIONE = ['ciclo for', 'ciclo while']
 
   def initialize(chiave)
     @chiave = chiave
