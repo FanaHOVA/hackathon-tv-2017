@@ -25,7 +25,7 @@ module Risposte
       if   Wikipedia.find(@argomento).text.nil? 
         "Scusami, questo argomento non mi compete... Unlucky :("
       else
-        page.fullurl
+        "Ti abbiamo trovato un tutorial! Vai su #{link}" + page.fullurl
       end 
     end
   end

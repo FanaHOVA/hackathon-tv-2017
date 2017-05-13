@@ -15,9 +15,9 @@ class AnalisiInput
 
   def self.tutorial(text)
     data = text.match(/tutorial \b\w*\b (.*)/)
-    if data
+    if data 
       link = Risposte::Tutorial.new(data[1]).trova_link
-      "Ti abbiamo trovato un tutorial! Vai su #{link}"
+      
     else
       "Nessun tutorial trovato su #{data} :("
     end

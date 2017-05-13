@@ -20,7 +20,7 @@ class Argomenti
     if   Wikipedia.find(@chiave).text.nil?
       "Scusami, questo argomento non mi compete... Unlucky :("
     else
-      Wikipedia.find(@chiave).summary
+    "Ti abbiamo trovato un tutorial! \n" + Wikipedia.find(@chiave).summary
     end
   end
 
