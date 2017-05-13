@@ -11,7 +11,7 @@ Bot.on :message do |message|
   puts "Received '#{message.inspect}' from #{message.sender}"
   text = message.text
 
-  if data = text.match(array_to_regexp(Argomenti::PROGRAMMAZIONE))
+  if data = text.match(array_to_regexp(Argomenti::PROGRAMMAZIONE, true))
     rispondi_con(AnalisiInput.programmazione(data[1]), message)
   elsif array_to_regexp(Messaggi::DOMANDE) =~ text
     rispondi_con(AnalisiInput.domande(text), message)
